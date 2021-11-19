@@ -116,8 +116,8 @@ class Ranking:
                 window = interf.Window("Ranking", layout, margins=(100, 50))
 
 
-if __name__ == '__main__':
-    puntuaciones = {"Facil": [0, "Fácil"], "Medio": [0, "Medio"], "Snake": [69, "Medio"]}
-    pk.dump(puntuaciones, open("rank.p", "wb"))
-    rank = Ranking()
-    rank.showRanking()
+#if __name__ == '__main__':
+   # puntuaciones = {"Facil": [0, "Fácil"], "Medio": [0, "Medio"], "Snake": [69, "Medio"]}
+   # pk.dump(puntuaciones, open("rank.p", "wb"))
+   # rank = Ranking()
+   # rank.showRanking()

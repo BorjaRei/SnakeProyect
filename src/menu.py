@@ -229,8 +229,3 @@ ventana.mainloop()
 # snakeColour(int. int,int): rgb con el color de la serpiente
 # borders(bool): booleano para indicar si los bordes matan a la serpiente o reaparece en el otro extremo
 # foodType(int): elegir el modo de puntucion (0=> 1 punto por comida, 1=> 1 punto por manzana y puntos extra por comida especial)
-
-
-
-
-
