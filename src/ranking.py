@@ -117,7 +117,7 @@ class Ranking:
 
 
 if __name__ == '__main__':
-    puntuaciones = {"lion": [25, "Fácil"], "kitty": [17, "Medio"], "snake": [69, "Medio"]}
+    puntuaciones = {"Facil": [0, "Fácil"], "Medio": [0, "Medio"], "Snake": [69, "Medio"]}
     pk.dump(puntuaciones, open("rank.p", "wb"))
     rank = Ranking()
     rank.showRanking()
