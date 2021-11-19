@@ -2,6 +2,9 @@ import PySimpleGUI as interf
 import pandas as pd
 import pickle as pk
 
+def showRank():
+    rank=Ranking()
+    rank.showRanking()
 class Ranking:
     def __init__(self):
         try:

@@ -8,12 +8,15 @@ from tkinter import *
 from snake import *
 from ranking import Ranking
 import pickle as pk
+from main import *
 
 global puntuaciones
 global nombre
 global v
 global foodType
 global dificultad
+global b
+b=True
 v=150
 nombre="Rodri"
 foodType=0
@@ -40,9 +43,12 @@ ColorTablero = Menu(menuBar, tearoff=0)
 VelSerpiente = Menu(menuBar, tearoff=0)
 Bordes = Menu(menuBar, tearoff=0)
 
+
 dificultad="Facil"
 
 Ranking = Menu(menuBar, tearoff=0)
+
+
 
 # Colores
 black = pygame.Color(0, 0, 0)
@@ -60,16 +66,13 @@ s2 = 20
 
 menuBar.add_cascade(label="Dificultad", menu=TamanoTablero)
 
-label=Label(ventana, text="HOLA")
-label.pack
-Label(ventana, text=dificultad).pack()
-Label(ventana, text="¡Otra etiqueta!").pack()
-Label(ventana, text="¡Última etiqueta!").pack()
 
 def dificil():
     global dificultad
+    global v
+    global foodType
     dificultad="Dificil"
-    v = 590
+    v = 50
     foodType=1
 
     Label(ventana, text=dificultad).pack()
@@ -80,8 +83,10 @@ TamanoTablero.add_command(label="Dificil", command=dificil)
 
 def medio():
     global dificultad
+    global v
+    global foodType
     dificultad = "Medio"
-    v = 350
+    v = 100
     foodType = 0
 
 
@@ -89,7 +94,8 @@ TamanoTablero.add_command(label="Medio", command=medio)
 
 
 def facil():
-
+    global v
+    global  foodType
     global dificultad
     dificultad = "Facil"
     v = 150
@@ -157,6 +163,7 @@ menuBar.add_cascade(label="Bordes", menu=Bordes)
 
 
 def bordesSi():
+
     global b
     b = True
 
@@ -174,7 +181,9 @@ Bordes.add_command(label="No", command=bordesNo)
 
 #################
 def jugar():
-    ranking()
+    showRank()
+    print(b)
+    print(v)
     be = Board(s1, s2, v, t, cs, b, foodType)
     score=be.play()
     print("score")
@@ -184,12 +193,14 @@ def jugar():
     print(puntuaciones)
     pygame.quit()
 
-def nada():
-    return True
 
 def ranking():
-    rank = Ranking()
-    rank.showRanking()
+    showRank()
+
+# Ranking
+menuBar.add_cascade(label="Ranking", menu=Ranking)
+Ranking.add_command(label="Ver Ranking", command=ranking)
+
 
 
 button = tk.Button(master=ventana, text='Jugar', command=jugar, height=3, width=15)
@@ -198,9 +209,9 @@ button.place(relx=0.5, rely=0.5, anchor=CENTER)
 
 
 
-dif = tk.Button(master=ventana, text="JAIDJias", command=nada, height=6, width=15)
+dif = tk.Button(master=ventana, text='Jugar', command=ranking, height=6, width=15)
 dif.pack()
-dif.place(relx=1.5, rely=7.5, anchor=CENTER)
+dif.place(relx=1.5, rely=2.5, anchor=CENTER)
 
 # be.play()
 ventana.update()
@@ -229,3 +240,8 @@ ventana.mainloop()
 # snakeColour(int. int,int): rgb con el color de la serpiente
 # borders(bool): booleano para indicar si los bordes matan a la serpiente o reaparece en el otro extremo
 # foodType(int): elegir el modo de puntucion (0=> 1 punto por comida, 1=> 1 punto por manzana y puntos extra por comida especial)
+
+
+
+
+

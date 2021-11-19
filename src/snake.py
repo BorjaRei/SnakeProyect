@@ -135,6 +135,8 @@ class Board:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     run = False
+                    pygame.quit()
+                    sys.exit()
                 #Decidir siguiente movimiento de la serpiente
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_RIGHT and self.snake.dir != 1:
@@ -162,7 +164,6 @@ class Board:
 
             run=self.gameOver()
 
-
         return self.score
 
 
@@ -171,13 +172,14 @@ class Board:
         run = True
         if self.snake.bodyTouch():
             print("GAME OVER")
+            self.printScore()
             time.sleep(1)
             run = False
         if self.borders:
             if self.snake.body[0].x >self.size or self.snake.body[0].x < 0 \
                     or  self.snake.body[0].y >self.size or self.snake.body[0].y < 0:
                 print("GAME OVER")
-
+                self.printScore()
                 time.sleep(1)
                 run=False
 
