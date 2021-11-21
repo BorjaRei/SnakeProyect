@@ -6,7 +6,7 @@ from tkinter import messagebox
 from tkinter.filedialog import askopenfilename
 from tkinter import *
 from snake import *
-from ranking import Ranking
+from ranking import *
 import pickle as pk
 from main import *
 
@@ -181,7 +181,7 @@ Bordes.add_command(label="No", command=bordesNo)
 
 #################
 def jugar():
-    showRank()
+
     print(b)
     print(v)
     be = Board(s1, s2, v, t, cs, b, foodType)

@@ -164,6 +164,7 @@ class Board:
 
             run=self.gameOver()
 
+        self.printScore()
         return self.score
 
 
@@ -172,14 +173,14 @@ class Board:
         run = True
         if self.snake.bodyTouch():
             print("GAME OVER")
-            self.printScore()
+            self.printGamOver()
             time.sleep(1)
             run = False
         if self.borders:
             if self.snake.body[0].x >self.size or self.snake.body[0].x < 0 \
                     or  self.snake.body[0].y >self.size or self.snake.body[0].y < 0:
                 print("GAME OVER")
-                self.printScore()
+                self.printGamOver()
                 time.sleep(1)
                 run=False
 
@@ -187,10 +188,22 @@ class Board:
 
     def printScore(self):
         score_font = pygame.font.SysFont('times new roman', 30)
-        score_surface = score_font.render('Score : ' + str(self.score), True, ( 211, 84, 0 ))
+        score_surface = score_font.render('Score : ' + str(self.score), True, ( 255, 255, 255 ))
         score_rect = score_surface.get_rect()
         score_rect.midtop = (self.size/2, 1.25)
         self.window.blit(score_surface, score_rect)
+        pygame.display.update()
+
+
+    def printGamOver(self):
+        score_font = pygame.font.SysFont('times new roman', 60)
+        score_surface = score_font.render('GAME OVER  ', True, (255, 255, 255))
+
+        score_rect = score_surface.get_rect()
+        score_rect.midtop = (self.size / 2, self.size/3)
+        self.window.blit(score_surface, score_rect)
+        pygame.display.update()
+        time.sleep(5)
 
 
 
